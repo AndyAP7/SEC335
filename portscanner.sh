@@ -7,7 +7,7 @@ if [ ! -f "Shostfile" ]; then
         echo "File not found" 
         exit 1
 fi
-echo "host, portostatus"
+echo "host, port,status"
 
 for host in (cat $hostfile) do
     for port in $(cat $portfile); do 
