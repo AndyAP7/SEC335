@@ -1,16 +1,13 @@
-﻿param ($networkprefix, $dnsserver)
-$start = 1
-$end = 254
+﻿param ($networkP, $Dserver)
 
-for ($i = $start; $i -le $end; $i++) {
-    $ip ="$networkprefix.$i"
-    try {
-    $result = Resolve-DnsName -Name $ip -Server $dnsserver -ErrorAction stop
-    if ($result) {
-        "$ip - " + $result.NameHost
-        }
+for ($i=0; $i -lt 255; $i++) {
+   
+    $name = Resolve-DnsName -DnsOnly $networkP'.'$i -Server $Dserver -ErrorAction Ignore | Select-Object -ExpandProperty "NameHost"
+    if ($null -ne $name) {
+        write-host $networkP'.'$i $name
     } 
-    catch {
-    }
+  }
+    
+ 
 
- }
+
