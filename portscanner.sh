@@ -3,7 +3,7 @@
 hostfile=$1
 portfile=$2
 
-if [ ! -f "Shostfile" ]; then
+if [ ! -f "$hostfile" ]; then
         echo "File not found" 
         exit 1
 fi
